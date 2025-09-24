@@ -14,7 +14,7 @@ public:
 			return a;
 		else
 		{
-			return a * (b - 1) + a;
+			return a + CalcularProduto(a,b - 1);
 		}
 	}
 };
