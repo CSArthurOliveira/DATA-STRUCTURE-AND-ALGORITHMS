@@ -1,3 +1,5 @@
+#include <iostream>
+
 struct Node
 {
 	int data;
@@ -7,9 +9,10 @@ struct Node
 
 class Q4LinkedList
 {
-public:
+private:
 	Node *head;
 	int listSize = 0;
+public:
 
 	Q4LinkedList()
 	{
@@ -54,12 +57,36 @@ public:
 
 		listSize++;
 	}
+	
+	void remove(int target){
+		remover(head,target);
+	}	
 
-	void remove(Node *start, int value)
+	void display(){
+		displayer(head);
+	}
+
+	void isOnList(int target){
+		verify(head,target);
+	}
+	
+	private:
+	
+	void reindex(Node* start){
+		Node* current = start;
+		int i = start->index;
+		while (current != nullptr){
+			current->index = i - 1;
+			current = current->next;
+			i++;
+		}
+	}
+
+	void remover(Node *start, int value)
 	{
 		if (start == nullptr && listSize == 0)
 			std::cout << "Lista vazia!" << std::endl;
-
+	
 		else if(head->data == value){
 			Node *remove = head;
 			head = head->next;
@@ -75,40 +102,29 @@ public:
 		}
 		else
 		{
-			remove(start->next, value);
+			remover(start->next, value);
 		}
-
+	
 		listSize--;
 	}
-
-	void display(Node *start)
+	
+	void displayer(Node *start)
 	{
 		if (start != nullptr){
 			std::cout << "Elemento no indice " << start->index << ": " << start->data << ",  ";
-			display(start->next);
+			displayer(start->next);
 		}
 		else if(head == nullptr)
 		{
 			std::cout << "Lista vazia!" << std::endl;
 		}
 	}
-
-	void isOnList(Node *start, int value)
+	
+	void verify(Node *start, int value)
 	{
 		if (start->data == value)
 			std::cout << "Elemento " << value << " encontrado no indice: " << start->index << std::endl;
 		else
-			isOnList(start->next, value);
+			verify(start->next, value);
 	};
-
-private:
-	void reindex(Node* start){
-		Node* current = start;
-		int i = start->index;
-		while (current != nullptr){
-			current->index = i - 1;
-			current = current->next;
-			i++;
-		}
-	}
 };

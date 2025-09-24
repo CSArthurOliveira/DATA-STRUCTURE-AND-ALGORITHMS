@@ -13,25 +13,25 @@ int main()
 	q4->insert(4);
 	q4->insert(5);
 
-	q4->display(q4->head);
+	q4->display();
 	std::cout << std::endl;
 
 	std::cout << std::endl;
-	q4->isOnList(q4->head, 4);
+	q4->isOnList(4);
 	std::cout << std::endl;
 
-	q4->remove(q4->head, 4);
+	q4->remove(4);
 
-	q4->display(q4->head);
+	q4->display();
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	q4->isOnList(q4->head,5);
+	q4->isOnList(5);
 	std::cout << std::endl;
 
-	q4->remove(q4->head,1);
+	q4->remove(1);
 
-	q4->display(q4->head);
+	q4->display();
 	std::cout << std::endl;
 	delete q4;
 	
