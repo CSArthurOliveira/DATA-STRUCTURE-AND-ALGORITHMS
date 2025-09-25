@@ -3,14 +3,13 @@ class Q3
 public:
 	void Menu()
 	{
-		int oprt = 0;
+		int oprt;
+		int x, y;
 		do
 		{
 			system("cls");
 			std::cout << "INFORME A FUNCAO DESEJADA: \n1 - CALCULAR PRODUTO\n2 - ENCERRAR O PROGRAMA\n\nFUNCAO: ";
 			std::cin >> oprt;
-
-			int x, y;
 			switch (oprt)
 			{
 			case 1:

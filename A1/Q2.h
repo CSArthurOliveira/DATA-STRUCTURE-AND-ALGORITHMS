@@ -3,21 +3,20 @@ class Q2
 public:
 	void Menu()
 	{
-		int oprt = 0;
+		int oprt;
+		int val;
 		do
 		{
 			system("cls");
 			std::cout << "INFORME A FUNCAO DESEJADA: \n1 - SOMATORIO\n2 - ENCERRAR O PROGRAMA\n\nFUNCAO: ";
 			std::cin >> oprt;
-
-			int valor;
 			switch (oprt)
 			{
 			case 1:
 				system("cls");
 				std::cout << "INFORME UM VALOR: ";
-				std::cin >> valor;
-				std::cout << "Resposta Q2: " << Somatorio(valor) << std::endl;
+				std::cin >> val;
+				std::cout << "Resposta Q2: " << Somatorio(val) << std::endl;
 				system("pause");
 				break;
 			case 2:

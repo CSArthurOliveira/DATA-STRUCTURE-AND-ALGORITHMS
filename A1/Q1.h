@@ -6,36 +6,35 @@ class Q1
 public:
 	void Menu()
 	{
-		int oprt = 0;
+		int oprt;
+		int val;
 		do
 		{
 			system("cls");
 			std::cout << "INFORME A FUNCAO DESEJADA: \n1 - (F1)\n2 - (F2)\n3 - (F3)\n4 - ENCERRAR\n\nFUNCAO: ";
 			std::cin >> oprt;
-
-			int valor;
 			switch (oprt)
 			{
 			case 1:
 				system("cls");
 				std::cout << "INFORME UM VALOR PARA (F1): ";
-				std::cin >> valor;
-				std::cout << "Resposta Q1F1: " << F1(valor) << std::endl;
+				std::cin >> val;
+				std::cout << "Resposta Q1F1: " << F1(val) << std::endl;
 				system("pause");
 				break;
 			case 2:
 				system("cls");
 				std::cout << "INFORME UM VALOR PARA (F2): ";
-				std::cin >> valor;
-				std::cout << "Resposta Q1F2: " << F2(valor) << std::endl;
+				std::cin >> val;
+				std::cout << "Resposta Q1F2: " << F2(val) << std::endl;
 				system("pause");
 				break;
 			case 3:
 				system("cls");
 				std::cout << "INFORME UM VALOR PARA (F3): ";
-				std::cin >> valor;
+				std::cin >> val;
 				std::cout << "Resposta Q1F3: ";
-				F3(valor);
+				F3(val);
 				system("pause");
 				break;
 			case 4:

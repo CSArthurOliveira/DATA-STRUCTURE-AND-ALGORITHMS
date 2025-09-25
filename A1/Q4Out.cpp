@@ -4,36 +4,8 @@
 int main()
 {
 	Q4LinkedList *q4 = new Q4LinkedList();
-
-	std::cout << "Resposta Q4:" << std::endl;
-	std::cout << std::endl;
-	q4->insert(1);
-	q4->insert(2);
-	q4->insert(3);
-	q4->insert(4);
-	q4->insert(5);
-
-	q4->display();
-	std::cout << std::endl;
-
-	std::cout << std::endl;
-	q4->isOnList(4);
-	std::cout << std::endl;
-
-	q4->remove(4);
-
-	q4->display();
-	std::cout << std::endl;
-	std::cout << std::endl;
-
-	q4->isOnList(5);
-	std::cout << std::endl;
-
-	q4->remove(1);
-
-	q4->display();
-	std::cout << std::endl;
-	delete q4;
+	q4->Menu();
 	
+	delete q4;
 	return 0;
 }
