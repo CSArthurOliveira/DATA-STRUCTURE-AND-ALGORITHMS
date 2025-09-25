@@ -4,13 +4,6 @@ class Q1
 {
 
 public:
-	Q1() {
-
-	};
-
-	~Q1() {
-
-	};
 
 	int F1(int number)
 	{
