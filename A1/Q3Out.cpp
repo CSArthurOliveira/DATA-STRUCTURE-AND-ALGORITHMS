@@ -4,12 +4,7 @@
 int main()
 {
     Q3 *q3 = new Q3();
-
-    std::cout << "Resposta Q3:" << std::endl;
-    std::cout << std::endl;
-    std::cout << q3->CalcularProduto(5, 1) << std::endl;
-    std::cout << q3->CalcularProduto(5, 5) << std::endl;
-    std::cout << std::endl;
+    q3->Menu();
     delete q3;
 
     return 0;

@@ -4,11 +4,7 @@
 int main()
 {
     Q2 *q2 = new Q2();
-
-    std::cout << "Resposta Q2:" << std::endl;
-    std::cout << std::endl;
-    std::cout << q2->Somatorio(9) << std::endl;
-    std::cout << std::endl;
+    q2->Menu();
     delete q2;
 
     return 0;
