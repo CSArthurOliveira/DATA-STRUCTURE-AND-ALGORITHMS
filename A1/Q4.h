@@ -45,11 +45,11 @@ private:
 
 		if (remover(head, target))
 		{
-			std::cout << "Elemento removido com sucesso!" << std::endl;
+			std::cout << "\nValor removido com sucesso!" << std::endl;
 		}
 		else
 		{
-			std::cout << "Falha ao remover elemento!" << std::endl;
+			std::cout << "\nFalha ao remover o valor!" << std::endl;
 		};
 	}
 
@@ -59,38 +59,36 @@ private:
 		{
 			return false;
 		}
-		else if (head->data == target)
-		{
-			Node *selected = head;
-			head = head->next;
-			reorganizer(selected->next);
-			delete selected;
-			listSize--;
-			return true;
-		}
 
-		else if (start->data == target)
+		if (start->data == target)
 		{
 			Node *selected = start;
+			// start é uma referência ao ponteiro (por exemplo head ou previous->next).
+			// Ao fazer start = start->next; atualizamos o ponteiro externo corretamente.
 			start = start->next;
-			reorganizer(selected->next);
+
+			// reorganiza a partir do nó que agora ocupa a posição (pode ser nullptr)
+			if (start != nullptr)
+				reorganizer(start);
+
 			delete selected;
 			listSize--;
 			return true;
 		}
 
+		// chamada recursiva para o próximo ponteiro (passamos previous->next como referência)
 		return remover(start->next, target);
 	}
 
 	void reorganizer(Node *start)
 	{
+		// protege contra nullptr
 		Node *current = start;
-		int i = start->index;
 		while (current != nullptr)
 		{
-			current->index = i - 1;
+			// simplesmente decrementa o índice de cada nó seguinte
+			current->index--;
 			current = current->next;
-			i++;
 		}
 	}
 
@@ -104,12 +102,12 @@ private:
 	{
 		if (start != nullptr)
 		{
-			std::cout << "Elemento no indice " << start->index << ": " << start->data << ";  ";
+			std::cout << "Valor no indice " << start->index << ": " << start->data << ";  ";
 			displaying(start->next);
 		}
 		else if (head == nullptr)
 		{
-			std::cout << "Lista vazia!" << std::endl;
+			std::cout << "\nLista vazia!" << std::endl;
 		}
 	}
 
@@ -119,11 +117,11 @@ private:
 
 		if (position < 0)
 		{
-			std::cout << "Elemento inexistente!" << std::endl;
+			std::cout << "\nValor inexistente!" << std::endl;
 		}
 		else
 		{
-			std::cout << "Elemento encontrado no indice: " << position << std::endl;
+			std::cout << "\nValor encontrado no indice: " << position << std::endl;
 		}
 	}
 
@@ -186,12 +184,13 @@ public:
 				std::cout << "INFORME O VALOR QUE DESEJA INSERIR: ";
 				std::cin >> toInsert;
 				insert(toInsert);
-				std::cout << "ELEMENTO INSERIDO COM SUCESSO: " << std::endl;
+				std::cout << "\nValor inserido com sucesso! " << std::endl;
 				system("pause");
 				break;
 			case 2:
 				system("cls");
 				display();
+				std::cout << std::endl;
 				if (!isEmpty())
 				{
 					std::cout << "INFORME O VALOR QUE DESEJA REMOVER: ";
@@ -210,6 +209,7 @@ public:
 			case 4:
 				system("cls");
 				display();
+				std::cout << std::endl;
 				system("pause");
 				break;
 			case 5:

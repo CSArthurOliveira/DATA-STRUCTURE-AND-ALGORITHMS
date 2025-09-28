@@ -5,7 +5,6 @@ int main()
 {
 	Q4LinkedList *q4 = new Q4LinkedList();
 	q4->Menu();
-	
 	delete q4;
 	return 0;
 }
