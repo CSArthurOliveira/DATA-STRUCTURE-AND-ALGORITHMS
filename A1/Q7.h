@@ -15,18 +15,9 @@ class Q7Queue
 private:
     QueueHead *queue;
 
-public:
-    Q7Queue()
+    bool isEmpty()
     {
-        queue = new QueueHead();
-        queue->head = nullptr;
-        queue->queueSize = 0;
-    }
-
-    ~Q7Queue()
-    {
-        clear();
-        delete queue;
+        return queue->head == nullptr;
     }
 
     void clear()
@@ -78,7 +69,7 @@ public:
     {
         if (queue->head == nullptr)
         {
-            std::cout << "Fila vazia!" << std::endl;
+            std::cout << "\nFila vazia!\n" << std::endl;
             return;
         }
         Node *current = queue->head;
@@ -96,7 +87,9 @@ public:
         if (queue->head == nullptr)
         {
             std::cout << "Fila vazia!" << std::endl;
-        }else{
+        }
+        else
+        {
             Node *current = queue->head;
             while (current != nullptr)
             {
@@ -109,11 +102,11 @@ public:
             }
             if (found == false)
             {
-                std::cout << "Valor não encontrado!" << std::endl;
+                std::cout << "\n\nValor nao encontrado!\n\n" << std::endl;
             }
             else
             {
-                std::cout << "Valor encontrado!" << std::endl;
+                std::cout << "\n\nValor encontrado!\n\n" << std::endl;
             }
         }
     }
@@ -121,5 +114,87 @@ public:
     int size()
     {
         return queue->queueSize;
+    }
+
+public:
+    Q7Queue()
+    {
+        queue = new QueueHead();
+        queue->head = nullptr;
+        queue->queueSize = 0;
+    }
+
+    ~Q7Queue()
+    {
+        clear();
+        delete queue;
+    }
+
+    void Menu()
+    {
+        int oprt;
+        int toInsert, toVerify;
+        do
+        {
+            system("cls");
+            std::cout << "INFORME A OPERACAO: \n1 - INSERIR\n2 - REMOVER\n3 - VERIFICAR\n4 - MOSTRAR\n5 - ENCERRAR O PROGRAMA\n\nOPERACAO: ";
+            std::cin >> oprt;
+
+            switch (oprt)
+            {
+            case 1:
+                system("cls");
+                std::cout << "INFORME O VALOR QUE DESEJA INSERIR: ";
+                std::cin >> toInsert;
+                enqueue(toInsert);
+                std::cout << "\nValor inserido com sucesso!\n " << std::endl;
+                system("pause");
+                break;
+            case 2:
+                system("cls");
+                std::cout << std::endl;
+                if (!isEmpty())
+                {
+                    dequeue();
+                    std::cout << "\nValor removido com sucesso!\n\n"
+                              << std::endl;
+                }
+                else
+                {
+                    std::cout << "Fila vazia!\n\n"
+                              << std::endl;
+                }
+                system("pause");
+                break;
+            case 3:
+                system("cls");
+                if (!isEmpty())
+                {
+                    std::cout << "INFORME O VALOR QUE DESEJA VERIFICAR: ";
+                    std::cin >> toVerify;
+                    isOnQueue(toVerify);
+                }
+                else
+                {
+                    std::cout << "\nFila vazia!\n\n"
+                              << std::endl;
+                }
+                system("pause");
+                break;
+            case 4:
+                system("cls");
+                display();
+                std::cout << std::endl;
+                system("pause");
+                break;
+            case 5:
+                std::cout << "PROGRAMA ENCERRADO!" << std::endl;
+                break;
+            default:
+                std::cout << "OPERACAO INVALIDA!" << std::endl;
+                system("pause");
+                break;
+            }
+        } while (oprt != 5);
     }
 };

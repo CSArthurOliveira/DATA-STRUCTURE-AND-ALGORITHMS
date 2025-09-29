@@ -63,11 +63,9 @@ private:
 		if (start->data == target)
 		{
 			Node *selected = start;
-			// start é uma referência ao ponteiro (por exemplo head ou previous->next).
-			// Ao fazer start = start->next; atualizamos o ponteiro externo corretamente.
+
 			start = start->next;
 
-			// reorganiza a partir do nó que agora ocupa a posição (pode ser nullptr)
 			if (start != nullptr)
 				reorganizer(start);
 
@@ -76,17 +74,15 @@ private:
 			return true;
 		}
 
-		// chamada recursiva para o próximo ponteiro (passamos previous->next como referência)
 		return remover(start->next, target);
 	}
 
 	void reorganizer(Node *start)
 	{
-		// protege contra nullptr
+
 		Node *current = start;
 		while (current != nullptr)
 		{
-			// simplesmente decrementa o índice de cada nó seguinte
 			current->index--;
 			current = current->next;
 		}
@@ -117,7 +113,7 @@ private:
 
 		if (position < 0)
 		{
-			std::cout << "\nValor inexistente!" << std::endl;
+			std::cout << "\nValor nao encontrado!" << std::endl;
 		}
 		else
 		{
@@ -201,9 +197,17 @@ public:
 				break;
 			case 3:
 				system("cls");
-				std::cout << "INFORME O VALOR QUE DESEJA VERIFICAR: ";
-				std::cin >> toVerify;
-				isOnList(toVerify);
+				if (!isEmpty())
+				{
+					std::cout << "INFORME O VALOR QUE DESEJA VERIFICAR: ";
+					std::cin >> toVerify;
+					isOnList(toVerify);
+				}
+				else
+				{
+					std::cout << "\nLista vazia!\n\n"
+							  << std::endl;
+				}
 				system("pause");
 				break;
 			case 4:

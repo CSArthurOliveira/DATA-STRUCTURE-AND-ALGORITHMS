@@ -69,11 +69,13 @@ private:
 			if (runner->next == nullptr)
 			{
 				std::cout << "Valor Inexistente" << std::endl;
-			}else{
-							Node *selected = runner->next;
-							runner->next = runner->next->next;
-							delete selected;
-							listSize--;
+			}
+			else
+			{
+				Node *selected = runner->next;
+				runner->next = runner->next->next;
+				delete selected;
+				listSize--;
 			}
 		}
 	}
@@ -149,7 +151,7 @@ public:
 		do
 		{
 			system("cls");
-			std::cout << "INFORME A OPERACAO: \n1 - INSERIR\n2 - REMOVER\n3 - VERIFICAR\n4 - MOSTRAR\n5 - ENCERRAR O PROGRAMA\n\nOPERACAO: ";
+			std::cout << "INFORME A OPERACAO: \n1 - INSERIR\n2 - REMOVER\n3 - VERIFICAR\n4 - MOSTRAR\n5 - NOVA LISTA\n6 - ENCERRAR O PROGRAMA\n\nOPERACAO: ";
 			std::cin >> oprt;
 
 			switch (oprt)
@@ -177,13 +179,16 @@ public:
 				break;
 			case 3:
 				system("cls");
-				if(!isEmpty())
+				if (!isEmpty())
 				{
 					std::cout << "INFORME O VALOR QUE DESEJA VERIFICAR: ";
 					std::cin >> toVerify;
 					isOnList(toVerify);
-				}else{
-					std::cout << "Lista Vazia" << std::endl;
+				}
+				else
+				{
+					std::cout << "Lista Vazia\n"
+							  << std::endl;
 				};
 				system("pause");
 				break;
@@ -194,6 +199,13 @@ public:
 				system("pause");
 				break;
 			case 5:
+				system("cls");
+				clear();
+				std::cout << "Nova lista criada!\n"
+						  << std::endl;
+				system("pause");
+				break;
+			case 6:
 				std::cout << "PROGRAMA ENCERRADO!" << std::endl;
 				break;
 			default:
@@ -201,6 +213,6 @@ public:
 				system("pause");
 				break;
 			}
-		} while (oprt != 5);
+		} while (oprt != 6);
 	}
 };
