@@ -69,7 +69,8 @@ private:
     {
         if (queue->head == nullptr)
         {
-            std::cout << "\nFila vazia!\n" << std::endl;
+            std::cout << "\nFila vazia!\n"
+                      << std::endl;
             return;
         }
         Node *current = queue->head;
@@ -102,11 +103,13 @@ private:
             }
             if (found == false)
             {
-                std::cout << "\n\nValor nao encontrado!\n\n" << std::endl;
+                std::cout << "\n\nValor nao encontrado!\n\n"
+                          << std::endl;
             }
             else
             {
-                std::cout << "\n\nValor encontrado!\n\n" << std::endl;
+                std::cout << "\n\nValor encontrado!\n\n"
+                          << std::endl;
             }
         }
     }

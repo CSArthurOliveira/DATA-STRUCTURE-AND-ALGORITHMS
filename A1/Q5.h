@@ -12,17 +12,6 @@ private:
 	Node *head;
 	int listSize;
 
-	void clear()
-	{
-		while (head != nullptr)
-		{
-			Node *current = head;
-			head = head->next;
-			delete current;
-		}
-		listSize = 0;
-	}
-
 	void insert(int value)
 	{
 		if (head == nullptr)
@@ -80,11 +69,22 @@ private:
 		}
 	}
 
+	void clear()
+	{
+		while (head != nullptr)
+		{
+			Node *current = head;
+			head = head->next;
+			delete current;
+		}
+		listSize = 0;
+	}
+
 	void display()
 	{
 		if (head == nullptr && listSize == 0)
 		{
-			std::cout << "Lista Vazia" << std::endl;
+			std::cout << "\nLista Vazia\n" << std::endl;
 		}
 		else
 		{
@@ -132,6 +132,11 @@ private:
 		return head == nullptr;
 	}
 
+	int getListSize()
+	{
+		return listSize;
+	}
+
 public:
 	Q5LinkedList()
 	{
@@ -151,7 +156,7 @@ public:
 		do
 		{
 			system("cls");
-			std::cout << "INFORME A OPERACAO: \n1 - INSERIR\n2 - REMOVER\n3 - VERIFICAR\n4 - MOSTRAR\n5 - NOVA LISTA\n6 - ENCERRAR O PROGRAMA\n\nOPERACAO: ";
+			std::cout << "INFORME A OPERACAO: \n1 - INSERIR\n2 - REMOVER\n3 - QUANTIDADE DE ELEMENTOS\n4 - MOSTRAR\n5 - NOVA LISTA\n6 - ENCERRAR O PROGRAMA\n\nOPERACAO: ";
 			std::cin >> oprt;
 
 			switch (oprt)
@@ -161,7 +166,7 @@ public:
 				std::cout << "INFORME O VALOR QUE DESEJA INSERIR: ";
 				std::cin >> toInsert;
 				insert(toInsert);
-				std::cout << "\nValor inserido com sucesso! " << std::endl;
+				std::cout << "\n\nValor inserido com sucesso!\n\n" << std::endl;
 				system("pause");
 				break;
 			case 2:
@@ -173,7 +178,7 @@ public:
 					std::cout << "INFORME O VALOR QUE DESEJA REMOVER: ";
 					std::cin >> toRemove;
 					remove(toRemove);
-					std::cout << "\nValor removido com sucesso!" << std::endl;
+					std::cout << "\n\nValor removido com sucesso!\n\n" << std::endl;
 				}
 				system("pause");
 				break;
@@ -181,15 +186,12 @@ public:
 				system("cls");
 				if (!isEmpty())
 				{
-					std::cout << "INFORME O VALOR QUE DESEJA VERIFICAR: ";
-					std::cin >> toVerify;
-					isOnList(toVerify);
+					std::cout << "\nQUANTIDADE DE ELEMENTOS DA LISTA: " << getListSize() << "\n\n"<< std::endl;
 				}
 				else
 				{
-					std::cout << "Lista Vazia\n"
-							  << std::endl;
-				};
+					std::cout << "\n\nLista Vazia\n\n" << std::endl;
+				}
 				system("pause");
 				break;
 			case 4:

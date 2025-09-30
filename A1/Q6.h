@@ -141,7 +141,7 @@ public:
                 if (!isEmpty())
                 {
                     pop();
-                    std::cout << "\nValor removido com sucesso!\n\n"
+                    std::cout << "Valor removido com sucesso!\n\n"
                               << std::endl;
                 }
                 else
